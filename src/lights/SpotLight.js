@@ -14,7 +14,7 @@ THREE.SpotLight = function ( color, intensity, distance, angle, penumbra, decay 
 	this.target = new THREE.Object3D();
 
 	this.distance = ( distance !== undefined ) ? distance : 0;
-	this.angle = ( angle !== undefined ) ? angle : Math.PI / 3;
+	this._angle = ( angle !== undefined ) ? angle : Math.PI / 3;
 	this.penumbra = ( penumbra !== undefined ) ? penumbra : 0;
 	this.decay = ( decay !== undefined ) ? decay : 1;	// for physically correct lights, should be 2.
 
@@ -44,6 +44,24 @@ Object.defineProperty( THREE.SpotLight.prototype, "power", {
 	}
 
 } );
+
+
+Object.defineProperty( THREE.SpotLight.prototype, "angle", {
+
+	set: function ( radians ) {
+
+		this._angle = radians;
+
+		if( this.autoAdjustShadowAngle !== false ) {
+			this.shadow.camera.fov = (radians * 114.59155902616465); //(360 / Math.PI) = 114.59155902616465
+			this.shadow.camera.updateProjectionMatrix();
+		}
+
+	},
+
+	get: function ( ) { return this._angle; }
+
+});
 
 THREE.SpotLight.prototype.copy = function ( source ) {
 
