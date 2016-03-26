@@ -52,8 +52,8 @@ Object.defineProperty( THREE.SpotLight.prototype, "angle", {
 
 		this._angle = radians;
 
-		if( this.autoAdjustShadowAngle !== false ) {
-			this.shadow.camera.fov = (radians * 114.59155902616465); //(360 / Math.PI) = 114.59155902616465
+		if( this.autoShadow !== false ) {
+			this.shadow.camera.fov = THREE.Math.radToDeg( 2 * radians );
 			this.shadow.camera.updateProjectionMatrix();
 		}
 
