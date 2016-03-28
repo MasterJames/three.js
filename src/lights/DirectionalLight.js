@@ -1,6 +1,7 @@
 /**
  * @author mrdoob / http://mrdoob.com/
  * @author alteredq / http://alteredqualia.com/
+ * @author MasterJames / http://master-domain.com/
  */
 
 THREE.DirectionalLight = function ( color, intensity, lightShadowClass ) {
