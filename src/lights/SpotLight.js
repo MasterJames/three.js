@@ -1,5 +1,6 @@
 /**
  * @author alteredq / http://alteredqualia.com/
+ * @author MasterJames / http://master-domain.com/
  */
 
 THREE.SpotLight = function ( color, intensity, distance, angle, penumbra, decay ) {
